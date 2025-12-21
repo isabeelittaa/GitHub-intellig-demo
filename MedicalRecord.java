@@ -1,12 +1,11 @@
 public class MedicalRecord {
-    // 1. Private fields (4+)
+
     private String recordId;
     private String patientName;
     private String diagnosis;
     private String notes;
-    private boolean isArchived; // If true, record cannot be modified
+    private boolean isArchived;
 
-    // 2. Constructor
     public MedicalRecord(String recordId, String patientName, String diagnosis) {
         this.recordId = recordId;
         this.patientName = patientName;
@@ -15,13 +14,14 @@ public class MedicalRecord {
         this.isArchived = false;
     }
 
-    // 3. Getters and Setters
-    public String getDiagnosis() { return diagnosis; }
-    public String getNotes() { return notes; }
+    public String getDiagnosis() {
+        return diagnosis;
+    }
 
-    // 4. Methods with Business Logic
+    public String getNotes() {
+        return notes;
+    }
 
-    // Logic: Append new notes to the history, but only if not archived
     public void addDoctorNote(String newNote) {
         if (!isArchived) {
             this.notes += "\n - " + newNote;
@@ -31,7 +31,6 @@ public class MedicalRecord {
         }
     }
 
-    // Logic: Lock the record so no further changes can be made
     public void archiveRecord() {
         if (isArchived) {
             System.out.println("Record is already archived.");

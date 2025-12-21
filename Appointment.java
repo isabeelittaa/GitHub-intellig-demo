@@ -1,12 +1,11 @@
 public class Appointment {
-    // 1. Private fields (4+)
-    private String appointmentId;
-    private Patient patient; // Storing the actual Patient object
-    private Doctor doctor;   // Storing the actual Doctor object
-    private String date;
-    private String status;   // e.g., "Scheduled", "Completed", "Cancelled"
 
-    // 2. Constructor
+    private String appointmentId;
+    private Patient patient;
+    private Doctor doctor;
+    private String date;
+    private String status;
+
     public Appointment(String appointmentId, Patient patient, Doctor doctor, String date) {
         this.appointmentId = appointmentId;
         this.patient = patient;
@@ -15,12 +14,10 @@ public class Appointment {
         this.status = "Pending";
     }
 
-    // 3. Getters and Setters
-    public String getStatus() { return status; }
+    public String getStatus() {
+        return status;
+    }
 
-    // 4. Methods with Business Logic
-
-    // Method to confirm appointment if doctor is available
     public void confirmAppointment() {
         if (doctor.isAvailable()) {
             this.status = "Confirmed";
@@ -31,7 +28,6 @@ public class Appointment {
         }
     }
 
-    // Method to complete the visit and update patient history
     public void completeVisit() {
         if (this.status.equals("Confirmed")) {
             this.status = "Completed";
