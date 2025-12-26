@@ -1,12 +1,10 @@
 public class Medicine {
-    // 1. Private fields (4+)
     private String medicineId;
     private String name;
     private double price;
     private int stockQuantity;
     private boolean requiresPrescription;
 
-    // 2a. Parameterized Constructor
     public Medicine(String medicineId, String name, double price, int stockQuantity, boolean requiresPrescription) {
         this.medicineId = medicineId;
         this.name = name;
@@ -15,11 +13,9 @@ public class Medicine {
         this.requiresPrescription = requiresPrescription;
     }
 
-    // 2b. Default Constructor (REQUIRED BY RUBRIC)
     public Medicine() {
     }
 
-    // 3. Getters and Setters for ALL fields (REQUIRED BY RUBRIC)
     public String getMedicineId() { return medicineId; }
     public void setMedicineId(String medicineId) { this.medicineId = medicineId; }
 
@@ -35,7 +31,6 @@ public class Medicine {
     public boolean isRequiresPrescription() { return requiresPrescription; }
     public void setRequiresPrescription(boolean requiresPrescription) { this.requiresPrescription = requiresPrescription; }
 
-    // 4. Methods with Business Logic
     public void dispense(int amount) {
         if (amount <= 0) {
             System.out.println("Error: Amount must be positive.");
@@ -59,7 +54,6 @@ public class Medicine {
         }
     }
 
-    // 5. toString Method (REQUIRED BY RUBRIC)
     @Override
     public String toString() {
         return "Medicine [ID=" + medicineId + ", Name=" + name + ", Price=" + price + ", Stock=" + stockQuantity + "]";

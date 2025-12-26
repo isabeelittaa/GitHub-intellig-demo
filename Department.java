@@ -1,12 +1,10 @@
 public class Department {
-    // 1. Private fields (4+)
     private String deptId;
     private String deptName;
     private String headDoctor;
     private int totalBeds;
     private int occupiedBeds;
 
-    // 2a. Parameterized Constructor
     public Department(String deptId, String deptName, String headDoctor, int totalBeds) {
         this.deptId = deptId;
         this.deptName = deptName;
@@ -15,11 +13,9 @@ public class Department {
         this.occupiedBeds = 0;
     }
 
-    // 2b. Default Constructor (REQUIRED BY RUBRIC)
     public Department() {
     }
 
-    // 3. Getters and Setters for ALL fields
     public String getDeptId() { return deptId; }
     public void setDeptId(String deptId) { this.deptId = deptId; }
 
@@ -35,7 +31,6 @@ public class Department {
     public int getOccupiedBeds() { return occupiedBeds; }
     public void setOccupiedBeds(int occupiedBeds) { this.occupiedBeds = occupiedBeds; }
 
-    // 4. Methods with Business Logic
     public void admitPatientToWard() {
         if (occupiedBeds < totalBeds) {
             occupiedBeds++;
@@ -54,7 +49,6 @@ public class Department {
         }
     }
 
-    // 5. toString Method (REQUIRED BY RUBRIC)
     @Override
     public String toString() {
         return "Department [Name=" + deptName + ", Head=" + headDoctor + ", Capacity=" + occupiedBeds + "/" + totalBeds + "]";

@@ -1,12 +1,10 @@
 public class Patient {
-    // 1. Private fields (4+)
     private String patientId;
     private String fullName;
     private int age;
     private String ailment;
     private boolean isAdmitted;
 
-    // 2a. Parameterized Constructor
     public Patient(String patientId, String fullName, int age, String ailment) {
         this.patientId = patientId;
         this.fullName = fullName;
@@ -15,11 +13,9 @@ public class Patient {
         this.isAdmitted = false;
     }
 
-    // 2b. Default Constructor (REQUIRED BY RUBRIC)
     public Patient() {
     }
 
-    // 3. Getters and Setters for ALL fields (REQUIRED BY RUBRIC)
     public String getPatientId() { return patientId; }
     public void setPatientId(String patientId) { this.patientId = patientId; }
 
@@ -35,7 +31,6 @@ public class Patient {
     public boolean isAdmitted() { return isAdmitted; }
     public void setAdmitted(boolean admitted) { isAdmitted = admitted; }
 
-    // 4. Methods with Business Logic
     public void admitToHospital() {
         if (isAdmitted) {
             System.out.println("Patient " + fullName + " is already admitted.");
@@ -55,7 +50,6 @@ public class Patient {
         }
     }
 
-    // 5. toString Method (REQUIRED BY RUBRIC)
     @Override
     public String toString() {
         return "Patient [ID=" + patientId + ", Name=" + fullName + ", Age=" + age + ", Ailment=" + ailment + "]";

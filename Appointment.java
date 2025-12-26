@@ -1,12 +1,10 @@
 public class Appointment {
-    // 1. Private fields (4+)
     private String appointmentId;
     private Patient patient;
     private Doctor doctor;
     private String date;
     private String status;
 
-    // 2a. Parameterized Constructor
     public Appointment(String appointmentId, Patient patient, Doctor doctor, String date) {
         this.appointmentId = appointmentId;
         this.patient = patient;
@@ -15,11 +13,9 @@ public class Appointment {
         this.status = "Pending";
     }
 
-    // 2b. Default Constructor (REQUIRED BY RUBRIC)
     public Appointment() {
     }
 
-    // 3. Getters and Setters for ALL fields
     public String getAppointmentId() { return appointmentId; }
     public void setAppointmentId(String appointmentId) { this.appointmentId = appointmentId; }
 
@@ -35,7 +31,6 @@ public class Appointment {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    // 4. Methods with Business Logic
     public void confirmAppointment() {
         if (doctor.isAvailable()) {
             this.status = "Confirmed";
@@ -55,7 +50,6 @@ public class Appointment {
         }
     }
 
-    // 5. toString Method (REQUIRED BY RUBRIC)
     @Override
     public String toString() {
         return "Appointment [ID=" + appointmentId + ", Date=" + date + ", Status=" + status + "]";

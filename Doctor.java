@@ -1,12 +1,10 @@
 public class Doctor {
-    // 1. Private fields (4+)
     private String doctorId;
     private String name;
     private String specialization;
     private int yearsOfExperience;
     private boolean isAvailable;
 
-    // 2a. Parameterized Constructor
     public Doctor(String doctorId, String name, String specialization, int yearsOfExperience) {
         this.doctorId = doctorId;
         this.name = name;
@@ -15,11 +13,9 @@ public class Doctor {
         this.isAvailable = true;
     }
 
-    // 2b. Default Constructor (REQUIRED BY RUBRIC)
     public Doctor() {
     }
 
-    // 3. Getters and Setters for ALL fields
     public String getDoctorId() { return doctorId; }
     public void setDoctorId(String doctorId) { this.doctorId = doctorId; }
 
@@ -35,7 +31,6 @@ public class Doctor {
     public boolean isAvailable() { return isAvailable; }
     public void setAvailable(boolean available) { isAvailable = available; }
 
-    // 4. Methods with Business Logic
     public void diagnosePatient(Patient patient) {
         if (isAvailable) {
             System.out.println("Dr. " + name + " is diagnosing " + patient.getFullName() + ".");
@@ -53,7 +48,6 @@ public class Doctor {
         }
     }
 
-    // 5. toString Method (REQUIRED BY RUBRIC)
     @Override
     public String toString() {
         return "Doctor [ID=" + doctorId + ", Name=" + name + ", Spec=" + specialization + ", Exp=" + yearsOfExperience + " yrs]";
