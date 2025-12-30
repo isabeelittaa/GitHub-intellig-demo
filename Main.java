@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Hospital Management System (Full Suite) ===");
-        System.out.println();
+        
 
         Patient patient = new Patient("P-101", "Sarah Maksimovich", 35, "Arrhythmia");
         Doctor doctor = new Doctor("D-07", "Dr. Arman Maratovich", "Cardiology", 15);
