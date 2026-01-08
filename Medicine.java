@@ -1,21 +1,28 @@
 public class Medicine {
     private String name;
     private double price;
+    private int stock;
 
-    public Medicine(String name, double price) {
+    public Medicine(String name, double price, int stock) {
         this.name = name;
-        setPrice(price);
+        this.price = price;
+        this.stock = stock;
     }
 
-    public void setPrice(double price) {
-        if (price > 0) {
-            this.price = price;
-        } else {
-            System.out.println("Validation Error: Price must be positive.");
-            this.price = 1.0;
+    public void dispense(int amount) {
+        if (stock >= amount) {
+            stock -= amount;
+            System.out.println("Dispensed " + amount + " of " + name);
         }
     }
-    
+
+    public void applyDiscount(double percent) {
+        price -= price * percent / 100;
+        System.out.println("New price: $" + price);
+    }
+
     @Override
-    public String toString() { return "Medicine: " + name + " ($" + price + ")"; }
+    public String toString() {
+        return "Medicine " + name + " ($" + price + ", Stock=" + stock + ")";
+    }
 }

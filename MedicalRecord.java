@@ -1,56 +1,29 @@
 public class MedicalRecord {
     private String recordId;
-    private String patientName;
+    private Patient patient;
     private String diagnosis;
-    private String notes;
-    private boolean isArchived;
+    private boolean archived;
 
-    public MedicalRecord(String recordId, String patientName, String diagnosis) {
-        this.recordId = recordId;
-        this.patientName = patientName;
+    public MedicalRecord(String id, Patient patient, String diagnosis) {
+        this.recordId = id;
+        this.patient = patient;
         this.diagnosis = diagnosis;
-        this.notes = "Initial intake completed.";
-        this.isArchived = false;
+        this.archived = false;
     }
 
-    public MedicalRecord() {
-    }
-
-    public String getRecordId() { return recordId; }
-    public void setRecordId(String recordId) { this.recordId = recordId; }
-
-    public String getPatientName() { return patientName; }
-    public void setPatientName(String patientName) { this.patientName = patientName; }
-
-    public String getDiagnosis() { return diagnosis; }
-    public void setDiagnosis(String diagnosis) { this.diagnosis = diagnosis; }
-
-    public String getNotes() { return notes; }
-    public void setNotes(String notes) { this.notes = notes; }
-
-    public boolean isArchived() { return isArchived; }
-    public void setArchived(boolean archived) { isArchived = archived; }
-
-    public void addDoctorNote(String newNote) {
-        if (!isArchived) {
-            this.notes += "\n - " + newNote;
-            System.out.println("Note added to " + patientName + "'s record.");
-        } else {
-            System.out.println("Error: Cannot modify archived record for " + patientName);
+    public void addDoctorNote(String note) {
+        if (!archived) {
+            System.out.println("Note added: " + note);
         }
     }
 
     public void archiveRecord() {
-        if (isArchived) {
-            System.out.println("Record is already archived.");
-        } else {
-            this.isArchived = true;
-            System.out.println("Action: Record for " + patientName + " has been archived.");
-        }
+        archived = true;
+        System.out.println("Record archived.");
     }
 
     @Override
     public String toString() {
-        return "MedicalRecord [ID=" + recordId + ", Patient=" + patientName + ", Diagnosis=" + diagnosis + ", Archived=" + isArchived + "]";
+        return "Record [" + recordId + ", Patient=" + patient.getFullName() + "]";
     }
 }

@@ -6,7 +6,7 @@ public abstract class Person {
     public Person(String id, String name, int age) {
         this.id = id;
         this.name = name;
-        setAge(age); 
+        setAge(age);
     }
 
     public String getId() { return id; }
@@ -17,7 +17,6 @@ public abstract class Person {
         if (age >= 0 && age <= 120) {
             this.age = age;
         } else {
-            System.out.println("Validation Error: Invalid age. Setting to 0.");
             this.age = 0;
         }
     }
