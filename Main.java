@@ -1,38 +1,85 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== Hospital Management System (Full Suite) ===");
-        System.out.println();
+        ArrayList<Person> hospitalPeople = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        Patient patient = new Patient("P-101", "Sarah Maksimovich", 35, "Arrhythmia");
-        Doctor doctor = new Doctor("D-07", "Dr. Arman Maratovich", "Cardiology", 15);
-        Appointment appointment = new Appointment("APT-001", patient, doctor, "2025-04-01");
-        Department cardioDept = new Department("DEPT-01", "Cardiology Wing", "Dr. Marat", 5);
-        Medicine meds = new Medicine("MED-99", "HeartMed+", 50.00, 100, true);
-        MedicalRecord record = new MedicalRecord("REC-100", patient.getFullName(), "Irregular Heartbeat");
+        hospitalPeople.add(new Doctor("D-01", "Dr. Arman", 40, "Cardiology"));
+        hospitalPeople.add(new Patient("P-01", "Sarah", 25, "Arrhythmia"));
 
-        System.out.println("--- Testing toString() Methods ---");
-        System.out.println(patient.toString());
-        System.out.println(doctor.toString());
-        System.out.println(appointment.toString());
-        System.out.println(cardioDept.toString());
-        System.out.println(meds.toString());
-        System.out.println(record.toString());
-        System.out.println();
+        while (true) {
+            try {
+                System.out.println("\n=== Hospital Management System ===");
+                System.out.println("1. Add Doctor");
+                System.out.println("2. Add Patient");
+                System.out.println("3. Show All People (Polymorphism)");
+                System.out.println("4. Run Role-Specific Actions (instanceof/Casting)");
+                System.out.println("5. Exit");
+                System.out.print("Select choice: ");
 
-        System.out.println("--- Testing Business Logic ---");
-        
-        cardioDept.admitPatientToWard();
-        
-        meds.dispense(10);
-        meds.applyDiscount(20);
+                int choice = scanner.nextInt();
+                scanner.nextLine(); 
 
-        record.addDoctorNote("Patient prescribed HeartMed+.");
-        record.archiveRecord();
+                if (choice == 1) {
+                    System.out.print("Enter ID: "); String id = scanner.nextLine();
+                    System.out.print("Enter Name: "); String name = scanner.nextLine();
+                    
+                    System.out.print("Enter Age: "); 
+                    int age = scanner.nextInt(); 
+                    scanner.nextLine(); 
+                    
+                    System.out.print("Enter Specialization: "); String spec = scanner.nextLine();
+                    hospitalPeople.add(new Doctor(id, name, age, spec));
+                    System.out.println("Doctor added successfully!");
 
-        doctor.performSurgery();
-        patient.admitToHospital();
-        appointment.confirmAppointment();
+                } else if (choice == 2) {
+                    System.out.print("Enter ID: "); String id = scanner.nextLine();
+                    System.out.print("Enter Name: "); String name = scanner.nextLine();
+                    
+                    System.out.print("Enter Age: "); 
+                    int age = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    System.out.print("Enter Ailment: "); String ailment = scanner.nextLine();
+                    hospitalPeople.add(new Patient(id, name, age, ailment));
+                    System.out.println("Patient added successfully!");
 
-        System.out.println("\n=== Program Complete ===");
+                } else if (choice == 3) {
+                    System.out.println("\n--- Current Hospital Directory ---");
+                    if (hospitalPeople.isEmpty()) {
+                        System.out.println("List is empty.");
+                    } else {
+                        for (Person p : hospitalPeople) {
+                            System.out.println(p.toString());
+                            p.performRole(); 
+                        }
+                    }
+
+                } else if (choice == 4) {
+                    System.out.println("\n--- Special Actions ---");
+                    for (Person p : hospitalPeople) {
+                        if (p instanceof Doctor) {
+                            ((Doctor) p).performSurgery();
+                        } else if (p instanceof Patient) {
+                            ((Patient) p).takeMedicine();
+                        }
+                    }
+
+                } else if (choice == 5) {
+                    System.out.println("Exiting program...");
+                    break;
+                } else {
+                    System.out.println("Invalid choice. Try again.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("\n!!! ERROR: You entered text instead of a number. Please try again. !!!");
+                scanner.nextLine();
+            }
+        }
+        scanner.close();
     }
 }
