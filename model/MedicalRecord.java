@@ -1,3 +1,4 @@
+package model;
 public class MedicalRecord {
     private String recordId;
     private Patient patient;

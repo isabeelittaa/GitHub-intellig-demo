@@ -1,3 +1,5 @@
+package model;
+import exception.InvalidHospitalDataException;
 public class Medicine {
     private String name;
     private double price;
@@ -8,6 +10,17 @@ public class Medicine {
         this.price = price;
         this.stock = stock;
     }
+
+    public void setPrice(double price) throws InvalidHospitalDataException {
+        if (price < 0) throw new InvalidHospitalDataException("Price cannot be negative.");
+        this.price = price;
+    }
+
+    public void setStock(int stock) throws InvalidHospitalDataException {
+        if (stock < 0) throw new InvalidHospitalDataException("Stock cannot be negative.");
+        this.stock = stock;
+    }
+
 
     public void dispense(int amount) {
         if (stock >= amount) {

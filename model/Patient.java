@@ -1,8 +1,12 @@
+package model;
+
+import exception.InvalidHospitalDataException;
+
 public class Patient extends Person {
     private String ailment;
     private boolean isAdmitted;
-
-    public Patient(String id, String name, int age, String ailment) {
+    
+    public Patient(String id, String name, int age, String ailment) throws InvalidHospitalDataException {
         super(id, name, age);
         this.ailment = ailment;
         this.isAdmitted = false;

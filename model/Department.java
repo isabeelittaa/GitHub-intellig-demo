@@ -1,3 +1,6 @@
+package model;
+import exception.InvalidHospitalDataException;
+
 public class Department {
     private String deptName;
     private String headDoctor;
@@ -17,7 +20,10 @@ public class Department {
             System.out.println("Patient admitted to " + deptName);
         }
     }
-
+    public void setTotalBeds(int totalBeds) throws InvalidHospitalDataException {
+        if (totalBeds < 0) throw new InvalidHospitalDataException("Beds cannot be negative.");
+        this.totalBeds = totalBeds;
+    }
     @Override
     public String toString() {
         return deptName + " (" + occupiedBeds + "/" + totalBeds + ")";
