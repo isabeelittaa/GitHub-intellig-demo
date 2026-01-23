@@ -1,10 +1,9 @@
 package menu;
 
 import exception.InvalidHospitalDataException;
-import model.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import model.*;
 
 public class MenuManager implements Menu {
     private final Scanner scanner = new Scanner(System.in);
@@ -54,8 +53,8 @@ public class MenuManager implements Menu {
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("Name: "); String name = scanner.nextLine();
         System.out.print("Age: "); int age = Integer.parseInt(scanner.nextLine());
-        System.out.print("Spec: "); String spec = scanner.nextLine();
-        System.out.print("Exp: "); int exp = Integer.parseInt(scanner.nextLine());
+        System.out.print("Specialization: "); String spec = scanner.nextLine();
+        System.out.print("Experience: "); int exp = Integer.parseInt(scanner.nextLine());
         people.add(new Doctor(id, name, age, spec, exp));
     }
 
