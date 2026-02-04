@@ -28,7 +28,9 @@ public class Patient extends Person {
         ailment = "Recovered";
         System.out.println("Patient discharged: " + getName());
     }
-
+    public String getAilment() {
+        return ailment;
+    }
     public void takeMedicine() {
         System.out.println(getName() + " takes medicine for " + ailment);
     }

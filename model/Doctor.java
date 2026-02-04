@@ -28,7 +28,8 @@ public class Doctor extends Person {
             System.out.println("Dr. " + getName() + " lacks experience.");
         }
     }
-
+    public String getSpecialization() { return specialization; }
+    public int getExperience() { return yearsOfExperience; }
     @Override
     public void performRole() {
         System.out.println("Dr. " + getName() + " works in " + specialization);
