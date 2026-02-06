@@ -13,7 +13,7 @@ public class MenuManager implements Menu {
     private final DoctorDAO doctorDAO = new DoctorDAO(); 
     @Override
     public void displayMenu() {
-        System.out.println("\n=== Hospital Management (FINAL DEFENSE) ===");
+        System.out.println("\n=== Hospital Management ===");
         System.out.println("1. Add Doctor");
         System.out.println("2. Add Patient");
         System.out.println("3. Show All Patients");
@@ -21,7 +21,7 @@ public class MenuManager implements Menu {
         System.out.println("5. Delete Patient");
         System.out.println("6. Search Patient by Name");
         System.out.println("7. Search by Age Range");
-        System.out.println("8. Show All Doctors (from DB)");
+        System.out.println("8. Show All Doctors");
         System.out.println("9. Hospital Status");
         System.out.println("10. Special Actions (Surgery)");
         System.out.println("0. Exit");
@@ -107,7 +107,7 @@ public class MenuManager implements Menu {
             if (ailment.isEmpty()) ailment = existing.getAilment();
             
             patientDAO.updatePatient(new Patient(id, name, age, ailment));
-        } else System.out.println("❌ Not found.");
+        } else System.out.println("Not found.");
     }
 
     private void deletePatient() {

@@ -26,7 +26,7 @@ public class PatientDAO {
             pstmt.setInt(3, patient.getAge());
             pstmt.setString(4, patient.getAilment());
             pstmt.executeUpdate();
-            System.out.println("✅ Patient saved to database!");
+            System.out.println("Patient saved to database!");
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
