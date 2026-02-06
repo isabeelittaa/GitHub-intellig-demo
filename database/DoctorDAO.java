@@ -1,9 +1,9 @@
 package database;
 
-import model.Doctor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import model.Doctor;
 
 public class DoctorDAO {
     public void insertDoctor(Doctor d) {
@@ -13,8 +13,8 @@ public class DoctorDAO {
             pstmt.setString(1, d.getId());
             pstmt.setString(2, d.getName());
             pstmt.setInt(3, d.getAge());
-            pstmt.setString(4, "General"); // или добавь геттер в Doctor.java
-            pstmt.setInt(5, 5); // или добавь геттер в Doctor.java
+            pstmt.setString(4, d.getSpecialization());
+            pstmt.setInt(5, 5); 
             pstmt.executeUpdate();
         } catch (SQLException e) { e.printStackTrace(); }
     }

@@ -1,7 +1,7 @@
 package menu;
 
 import database.DoctorDAO;
-import database.PatientDAO; // Новый импорт
+import database.PatientDAO; 
 import exception.InvalidHospitalDataException;
 import java.util.List;
 import java.util.Scanner;
@@ -10,8 +10,7 @@ import model.*;
 public class MenuManager implements Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final PatientDAO patientDAO = new PatientDAO();
-    private final DoctorDAO doctorDAO = new DoctorDAO(); // Работаем через DAO
-
+    private final DoctorDAO doctorDAO = new DoctorDAO(); 
     @Override
     public void displayMenu() {
         System.out.println("\n=== Hospital Management (FINAL DEFENSE) ===");
@@ -43,9 +42,9 @@ public class MenuManager implements Menu {
                     case 5 -> deletePatient();
                     case 6 -> searchByName();
                     case 7 -> searchByAge();
-                    case 8 -> showDoctors(); // Изменено
+                    case 8 -> showDoctors(); 
                     case 9 -> showStatus();
-                    case 10 -> runActions(); // Изменено
+                    case 10 -> runActions(); 
                     case 0 -> { return; }
                     default -> System.out.println("Invalid option.");
                 }
@@ -55,7 +54,6 @@ public class MenuManager implements Menu {
         }
     }
 
-    // --- ЛОГИКА ДЛЯ ВРАЧЕЙ (БЕЗ ArrayList) ---
     private void addDoctor() throws InvalidHospitalDataException {
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("Name: "); String name = scanner.nextLine();
@@ -64,7 +62,7 @@ public class MenuManager implements Menu {
         System.out.print("Exp: "); int exp = Integer.parseInt(scanner.nextLine());
         
         Doctor newDoctor = new Doctor(id, name, age, spec, exp);
-        doctorDAO.insertDoctor(newDoctor); // СРАЗУ В БАЗУ
+        doctorDAO.insertDoctor(newDoctor);
     }
 
     private void showDoctors() {
@@ -74,14 +72,12 @@ public class MenuManager implements Menu {
     }
 
     private void runActions() {
-        // Подгружаем врачей из базы перед выполнением действий
         List<Doctor> list = doctorDAO.getAllDoctors();
         for (Doctor d : list) {
             d.performSurgery();
         }
     }
 
-    // --- ЛОГИКА ДЛЯ ПАЦИЕНТОВ (УЖЕ БЕЗ ArrayList) ---
     private void addPatient() throws InvalidHospitalDataException {
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("Name: "); String name = scanner.nextLine();
