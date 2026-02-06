@@ -1,14 +1,13 @@
 package database;
 
-import model.Patient;
 import exception.InvalidHospitalDataException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import model.Patient;
 
 public class PatientDAO {
 
-    // Вспомогательный метод для извлечения пациента из ResultSet
     private Patient extractPatient(ResultSet rs) throws SQLException, InvalidHospitalDataException {
         return new Patient(
             rs.getString("patient_id"),
